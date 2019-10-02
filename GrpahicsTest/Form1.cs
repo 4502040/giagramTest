@@ -56,45 +56,47 @@ namespace GrpahicsTest
 
             frm.Size = new Size() { Width = 1200, Height = 1200 };
 
-            panel1.Size = new Size() { Width = 100, Height = 1200 };
+            panel1.Size = new Size() { Width = 150, Height = 1200 };
             panel1.Top = 5;
             panel1.Left = 10;
             //panel1.Width = 100;
 
             panel2.Height = frm.Height;
             panel2.Top = 5;
-            panel2.Left = 120;
+            panel2.Left = 150;
             panel2.Width = 200;
 
             i = 1;
 
             panel2.Width = diModel.Max(d => d.VesDown)+10;
 
-            panel1.Refresh();
-            panel2.Refresh();
+            //panel1.Refresh();
+            //panel2.Refresh();
 
             int gX1 = 0; int gY1 = 0;
             int gX2 = 0; int gY2 = 0;
 
+            Graphics g = panel1.CreateGraphics();
             Graphics g2 = panel2.CreateGraphics();
             g2.PageUnit = GraphicsUnit.Pixel;
-            g2.PageScale = 0.7F;
+            g2.PageScale = 1F;
+
+            g.Clear(Color.White);
+            g2.Clear(Color.White);
+
+            SolidBrush sbr = new SolidBrush(Color.Black);
+
+            FontFamily fam = new FontFamily("Tahoma");
+            Font font = new System.Drawing.Font(fam, 8, FontStyle.Regular);
 
             foreach (DiModel di in diModel) {
 
                 int y = i * 13;
 
-                DiModel next = diModel.Where(d => d.Dt > di.Dt).FirstOrDefault();              
-
-
-                SolidBrush sbr = new SolidBrush(Color.Black);
-                Graphics g = panel1.CreateGraphics();
-                FontFamily fam = new FontFamily("Tahoma");
-                Font font = new System.Drawing.Font(fam, 8, FontStyle.Regular);
-                g.DrawString(i+" - "+di.Date, font, sbr, new Point(10, y));
-
-
+                DiModel next = diModel.Where(d => d.Dt > di.Dt).FirstOrDefault();
                 
+                g.DrawString(i+" - "+di.Date, font, sbr, new Point(10, y));
+                                              
 
                 if (next == null)
                 {
