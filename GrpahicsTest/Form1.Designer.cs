@@ -30,6 +30,10 @@
         {
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.XYDiagramPane xyDiagramPane1 = new DevExpress.XtraCharts.XYDiagramPane();
+            DevExpress.XtraCharts.Legend legend1 = new DevExpress.XtraCharts.Legend();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem1 = new DevExpress.XtraCharts.CustomLegendItem();
+            DevExpress.XtraCharts.Legend legend2 = new DevExpress.XtraCharts.Legend();
+            DevExpress.XtraCharts.CustomLegendItem customLegendItem2 = new DevExpress.XtraCharts.CustomLegendItem();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
@@ -124,18 +128,50 @@
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1;0";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1;0";
             xyDiagram1.PaneLayoutDirection = DevExpress.XtraCharts.PaneLayoutDirection.Horizontal;
+            xyDiagramPane1.EnableAxisXZooming = DevExpress.Utils.DefaultBoolean.False;
             xyDiagramPane1.Name = "Pane 1";
             xyDiagramPane1.PaneID = 0;
             xyDiagram1.Panes.AddRange(new DevExpress.XtraCharts.XYDiagramPane[] {
             xyDiagramPane1});
             xyDiagram1.Rotated = true;
             this.chartControl1.Diagram = xyDiagram1;
+            this.chartControl1.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Right;
+            this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            this.chartControl1.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
+            this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.None;
             this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(35, 12);
+            this.chartControl1.Legend.TextVisible = false;
+            this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            legend1.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Right;
+            customLegendItem1.MarkerImageSizeMode = DevExpress.XtraCharts.ChartImageSizeMode.Stretch;
+            customLegendItem1.MarkerVisible = false;
+            customLegendItem1.Name = "Custom Legend Item 1";
+            customLegendItem1.Text = "Deepth Value";
+            legend1.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
+            customLegendItem1});
+            legend1.DockTargetName = "Default Pane";
+            legend1.Name = "Legend1";
+            legend2.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Right;
+            customLegendItem2.MarkerVisible = false;
+            customLegendItem2.Name = "Custom Legend Item 1";
+            customLegendItem2.Text = "Ves";
+            legend2.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
+            customLegendItem2});
+            legend2.DockTargetName = "Pane 1";
+            legend2.Name = "Legend2";
+            this.chartControl1.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
+            legend1,
+            legend2});
+            this.chartControl1.Location = new System.Drawing.Point(35, 0);
             this.chartControl1.Name = "chartControl1";
+            series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             series1.Name = "Series 1";
+            series1.ShowInLegend = false;
+            lineSeriesView1.LineMarkerOptions.Size = 8;
             series1.View = lineSeriesView1;
+            series2.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             series2.Name = "Series 2";
+            series2.ShowInLegend = false;
             lineSeriesView2.PaneName = "Pane 1";
             series2.View = lineSeriesView2;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
